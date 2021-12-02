@@ -78,7 +78,7 @@ es.monitor_score_function = accuracy
 ### Create and train the model
 Calling the ```fit``` method, the training process will begin
 ```
-model = Model(config, model_transformer, 3)
+model = Model(config, model_transformer, num_labels = 3)
 model.to('cuda')
 num_train_steps = int(len(train_dataset) / args.train_batch_size * args.epochs)
 model.fit(args.epochs, args.learning_rate, num_train_steps, args.accumulation_steps, 
