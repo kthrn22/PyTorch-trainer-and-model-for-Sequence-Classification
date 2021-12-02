@@ -30,7 +30,7 @@ class args:
     accumulation_steps = 2
     num_splits = 5
 ``` 
-### Split data
+### Create train and validation data
 In this example we will train the model using cross-validation. We will split our training data into ```args.num_splits``` folds.
 ```
 df = pd.read_csv('./train_data.csv')
