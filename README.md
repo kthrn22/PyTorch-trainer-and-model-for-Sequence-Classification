@@ -84,6 +84,6 @@ num_train_steps = int(len(train_dataset) / args.train_batch_size * args.epochs)
 model.fit(args.epochs, args.learning_rate, num_train_steps, args.accumulation_steps, 
           train_dataloader, val_dataloader, es)
 ```
-
+NOTE: To complete the cross-validation training process, run the code above again with ```args.fold``` equals 1, 2, ..., ```args.num_splits - 1```
 
 
