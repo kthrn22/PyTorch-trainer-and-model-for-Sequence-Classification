@@ -4,16 +4,16 @@ from sklearn.model_selection import StratifiedKFold
 
 
 def prepare_features(tokenizer, example, max_length):
-    tokenized_example = tokenizer(example['Review'], max_length = max_length, padding = 'max_length', 
+    tokenized_example = tokenizer(example['Text'], max_length = max_length, padding = 'max_length', 
                                   add_special_tokens = True, truncation = True)
-    if 'Sentiment' in example:
-        tokenized_example["label"] = example['Sentiment']
+    if 'Label' in example:
+        tokenized_example["label"] = example['Label']
     
     return tokenized_example
 
 def create_k_folds(df, num_splits):
     stratifier = StratifiedKFold(shuffle = True, n_splits = num_splits, random_state = 42)
-    for fold_idx, (train_idx, val_idx) in enumerate(stratifier.split(df, df['Sentiment'])):
+    for fold_idx, (train_idx, val_idx) in enumerate(stratifier.split(df, df['Label'])):
         df.loc[val_idx, 'kfold'] = fold_idx
     return df
 
